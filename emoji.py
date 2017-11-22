@@ -5,6 +5,7 @@ import operator
 
 from emoji import UNICODE_EMOJI
 
+#Funções
 def extract_emojis(str):
 	s = ''.join(c for c in str if c in emoji.UNICODE_EMOJI)
 	return (count_emoji(s))
@@ -36,6 +37,22 @@ def order_dict(x):
 	sorted_x = sorted(x.items(), key=operator.itemgetter(1), reverse=True)
 	return(sorted_x)
 
+#def words_next_emoji(s):
+#	count = 0
+#	words = line.split() 
+#	
+#	for w in words:
+#		for emoji in UNICODE_EMOJI:
+#		count += s.count(emoji)
+#		if count == 0:
+#			return False
+#		else:
+#			return (extract_emojis(s))
+
+#	return (words)
+    
+
+
 # --------------------------------------------------------
 
 #Lê arquivo com os dados da conversa
@@ -48,6 +65,9 @@ for r in range(1,42203):
 	line = f.readline()
 	if (has_emoji(line)):
 		all_emojis = merge_dicts(all_emojis, has_emoji(line))
+		#print (words_next_emoji(line))
+
+# --------------------------------------------------------
 
 #Cria um arquivo de resultados
 file = open("result.txt","w") 
@@ -61,12 +81,6 @@ for t in all_emojis_list:
 	file.write(str(encoded_emoji))	
 	file.write("\n")
 
-#file.write("--------------------------------------------\n")
-#for t in all_emojis_list:
-#	encoded_emoji = t[0].encode('unicode_escape')
-#	file.write(str(encoded_emoji))	
-#	file.write(" : ")
-#	file.write(str(t[1]))
-#	file.write("\n")
-
 f.close()
+
+# --------------------------------------------------------
